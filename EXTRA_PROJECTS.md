@@ -1,81 +1,73 @@
-# Week 2 — Extra Practice Projects
-
-Optional. Beyond the lab — classic beginner projects, adapted from Angela
-Yu's *100 Days of Code*, trimmed to use only what's been taught by this
-week: `input()`, comparisons, `if`/`elif`/`else`, `while`, and `for`/`range`.
-No lists, no functions, no `random` module yet — those come in Weeks 3–4.
+# Week 3 — Extra Practice Projects
 
 ---
 
-## Python Pizza
+## Rock, Paper, Scissors
 
-**Uses:** `input()`, arithmetic, `if`/`elif`/`else`
+**Uses:** functions, `return`, `random.randint()`
 
-Small pizza (S): $15. Medium (M): $20. Large (L): $25.
-Pepperoni on a small: +$2. Pepperoni on medium/large: +$3.
-Extra cheese, any size: +$1.
-
-1. Ask what size pizza, what topping choices, using `input()`.
-2. Work out the final bill from the choices.
-3. Print `Your final bill is: $<amount>.` — get the wording and the
-   trailing full stop exactly right.
-
-*Adapted from: 100 Days of Code, Day 3.*
-
----
-
-## Treasure Island
-
-**Uses:** `input()`, nested `if`/`else`
-
-A "choose your own adventure" text game. At each step, ask the player a
-question (e.g. "left or right?") and use `if`/`else` — nested where a
-choice only makes sense after an earlier one — to branch the story
-towards different endings ("you found the treasure" / "you got eaten by
-a dragon" / ...). Plan the branches on paper first before writing the
-`if`s.
-
-*Adapted from: 100 Days of Code, Day 3.*
+1. At the top of your file, write `import random`.
+2. Define a function called `get_computer_choice()`.
+3. Inside it, create a variable `number` and set it to `random.randint(0, 2)`.
+4. Use `if`/`elif`/`else` to check `number`:
+   - if it is `0`, return `"rock"`
+   - if it is `1`, return `"paper"`
+   - otherwise, return `"scissors"`
+5. Define a function called `decide_winner(user_choice, computer_choice)`.
+6. Inside it, if `user_choice` equals `computer_choice`, return `"draw"`.
+7. Add an `elif` that returns `"user"` if the user wins
+   (rock beats scissors, paper beats rock, scissors beats paper).
+8. Add an `else` that returns `"computer"`.
+9. Outside the functions, use `input()` to ask the user for their choice
+   and store it in a variable called `user_choice`.
+10. Call `get_computer_choice()` and store the result in `computer_choice`.
+11. Print the computer's choice.
+12. Call `decide_winner(user_choice, computer_choice)` and store the result
+    in `winner`.
+13. Print who won.
 
 ---
 
-## Higher or Lower
+## Calculator
 
-**Uses:** `while`, comparisons, `if`/`else`
+**Uses:** functions, parameters, `return`, calling one function from another
 
-The original game compares two things and asks which is higher. A
-trimmed version for this week:
+1. Define a function `add(n1, n2)` that returns `n1 + n2`.
+2. Define a function `subtract(n1, n2)` that returns `n1 - n2`.
+3. Define a function `multiply(n1, n2)` that returns `n1 * n2`.
+4. Define a function `divide(n1, n2)` that returns `n1 / n2`.
+5. Use `input()` to ask for the first number. Convert it with `float()` and
+   store it in `n1`.
+6. Create a variable `keep_going` and set it to `True`.
+7. Start a `while keep_going:` loop.
+8. Inside the loop, ask for an operator (`+ - * /`) and store it in
+   `operator`.
+9. Ask for the second number, convert it with `float()`, and store it in `n2`.
+10. Use `if`/`elif` to call the matching function and store the answer in
+    `result`. For example, if `operator == "+"`, then `result = add(n1, n2)`.
+11. Print the calculation and the result.
+12. Ask the user: `"Type 'y' to continue with the result, or 'n' to start over:"`
+13. If they type `"y"`, set `n1 = result`.
+14. Otherwise, ask for a new first number and store it in `n1`.
 
-1. Store two things to compare as variables (e.g. two accounts and their
-   follower counts) — hard-code them for now.
-2. Ask the user which one they think is higher.
-3. Compare their guess with `if`/`else` and print "Correct" or "Wrong".
-4. Wrap it in a `while` loop so they can play again — stop when they type
-   `"quit"`.
-
-*Adapted from: 100 Days of Code, Day 14 (trimmed — the real version picks
-two random accounts from a list, which needs Week 3's `random` module and
-Week 4's lists).*
-
----
-
-## Number Guessing Game
-
-**Uses:** `while`, comparisons, `if`/`elif`/`else`
-
-1. Pick a secret number and store it in a variable (hard-code it for now
-   — no `random` yet).
-2. Loop: ask the user to guess. If their guess is too high, say so. Too
-   low, say so. Correct, congratulate them and stop the loop.
-3. Count how many guesses it took.
-
-**Revisit this in Week 3:** once you've met the `random` module, swap the
-hard-coded secret number for `random.randint(1, 100)` — same game, now a
-different number every time.
-
-*Adapted from: 100 Days of Code, Day 12.*
+**Extension, once you've done Week 4:** replace the `if`/`elif` in step 10
+with a dictionary:
+`operations = {"+": add, "-": subtract, "*": multiply, "/": divide}`
+Then call `result = operations[operator](n1, n2)`.
 
 ---
 
-Stuck on why a loop never stops? That's `03 - while Loops`, section 4,
-"THE INFINITE LOOP", in this folder.
+## Number Guessing Game, upgraded
+
+**Uses:** `random.randint()`
+
+1. Open your Week 2 guessing game.
+2. Add `import random` at the top of the file.
+3. Find the line where you set the secret number.
+4. Replace the fixed number with `random.randint(1, 100)`.
+5. Run the game a few times and check that the secret number changes each time.
+
+---
+
+Stuck on why a function returning nothing gives you `None`? That's
+`01 - Defining and Calling Functions`, section 4, in this folder.
